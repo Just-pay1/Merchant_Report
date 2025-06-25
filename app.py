@@ -30,3 +30,5 @@ def get_report():
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=5000)
+
+# curl http://localhost:5000/report/ --output merchant_report.pdf
