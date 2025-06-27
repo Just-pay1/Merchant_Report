@@ -1,15 +1,23 @@
 import os
 from dotenv import load_dotenv
+import certifi
 
 load_dotenv()
-DB_PARAMS = {
-    'dbname': 'fraud',
-    'user': 'postgres',
-    'password': os.getenv('DB_PASSWORD'),  # Add your real password here if needed
-    'host': 'localhost',
-    'port': 5432
-}
-DB_URL = f"postgresql+psycopg2://postgres:{DB_PARAMS['password']}@localhost:5432/fraud"
+# Database config
+DB_USERNAME = os.getenv('DB_USERNAME')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+DB_HOST = os.getenv('DB_HOST')
+DB_PORT = 3306
+DB_NAME = os.getenv('DB_NAME')
+
+# Use certifi to get the trusted CA bundle path
+ssl_ca_path = certifi.where()
+
+# SQLAlchemy connection string
+DB_URL = (
+    f"mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    f"?ssl_ca={ssl_ca_path}"
+)
 
 # List of image paths
 IMAGE_PATHS = [

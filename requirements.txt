@@ -11,3 +11,6 @@ pandas==2.2.2
 PILLOW==9.4.0
 joblib
 dotenv
+sqlalchemy 
+pymysql
+certifi
