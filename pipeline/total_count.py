@@ -10,7 +10,7 @@ sns.set_style('whitegrid')
 # Load the merged DataFrame
 merged_df = pd.read_csv("Data/MOCK_DATA.csv")
 
-def total_count_calc():
+def total_count_calc(merged_df, merchent_id):
     """
     This function calculates the total transaction count in the last month,
     average daily transaction count, busiest and slowest days, and creates a
@@ -126,5 +126,5 @@ def total_count_calc():
     print("Visualization saved as 'transaction_count_analysis_last_month.png'")
 
 if __name__ == "__main__":
-    total_count_calc()
+    total_count_calc(merged_df, 3)
     print("Total count calculation completed.")

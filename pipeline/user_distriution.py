@@ -8,7 +8,7 @@ sns.set_style('whitegrid')
 
 # Load the merged DataFrame
 merged_df = pd.read_csv("Data/MOCK_DATA.csv")
-def user_state_distribution():
+def user_state_distribution(merged_df, merchent_id):
     """
     This function analyzes user distribution by state,
     calculates the top states by user count, and creates a pie chart visualization.
@@ -47,5 +47,5 @@ def user_state_distribution():
     plt.savefig(output_path, dpi=300)
 
 if __name__ == "__main__":
-    user_state_distribution()
+    user_state_distribution(merged_df, merchent_id=3)
     print("User state distribution analysis completed and saved as 'artifacts/user_state_distribution.png'.")

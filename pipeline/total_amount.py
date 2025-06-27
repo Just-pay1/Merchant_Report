@@ -11,7 +11,7 @@ sns.set_style('whitegrid')
 # Load the merged DataFrame
 merged_df = pd.read_csv("Data/MOCK_DATA.csv")
 
-def total_amount_calc():
+def total_amount_calc(merged_df, merchent_id):
     """
     This function calculates the total amount paid in the last month,
     average daily paid amount, highest day with its amount, and creates a
@@ -138,5 +138,5 @@ def total_amount_calc():
     print("Visualization saved as 'payment_analysis_last_month.png'")
 
 if __name__ == "__main__":
-    total_amount_calc()
+    total_amount_calc(merged_df, merchent_id=3)
     print("Total amount calculation and visualization completed.")

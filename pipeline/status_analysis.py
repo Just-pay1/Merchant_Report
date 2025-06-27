@@ -9,7 +9,7 @@ sns.set_style('whitegrid')
 
 # Load the merged DataFrame
 merged_df = pd.read_csv("Data/MOCK_DATA.csv")
-def transaction_status_analysis():
+def transaction_status_analysis(merged_df, merchent_id):
     """
     This function analyzes transaction statuses in the last month,
     calculates financial metrics, and creates a visualization of status distribution
@@ -134,5 +134,5 @@ def transaction_status_analysis():
     print("Visualization saved as 'financial_performance_analysis.png'")
 
 if __name__ == "__main__":
-    transaction_status_analysis()
+    transaction_status_analysis(merged_df, merchent_id=3)
     print("Transaction status analysis completed successfully.")

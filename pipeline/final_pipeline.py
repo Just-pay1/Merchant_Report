@@ -11,29 +11,36 @@ from pipeline.user_analysis import user_analysis_metrics
 from pipeline.user_distriution import user_state_distribution
 from pipeline.create_pdf import save_images_to_pdf
 from config import IMAGE_PATHS, PDF_PATH
+from config import DB_URL
+import pandas as pd
+
+# Connect and query
+from sqlalchemy import create_engine
+engine = create_engine(DB_URL)
+merged_df = pd.read_sql("SELECT * FROM `reporting-db`.v3_full_report", engine)
 
 
-def run_pipeline():
+def run_pipeline(merged_df, merchent_id):
     # Calculate total amount
-    total_amount = total_amount_calc()
+    total_amount = total_amount_calc(merged_df, merchent_id)
     print(f"Total Amount: {total_amount}")
 
     # Calculate total count
-    total_count = total_count_calc()
+    total_count = total_count_calc(merged_df, merchent_id)
     print(f"Total Count: {total_count}")
 
     # Analyze transaction status
-    status_analysis = transaction_status_analysis()
+    status_analysis = transaction_status_analysis(merged_df, merchent_id)
     print("Transaction Status Analysis:")
     print(status_analysis)
 
     # Analyze user metrics
-    user_metrics = user_analysis_metrics()
+    user_metrics = user_analysis_metrics(merged_df, merchent_id)
     print("User Analysis Metrics:")
     print(user_metrics)
 
     # Analyze user state distribution
-    user_distribution = user_state_distribution()
+    user_distribution = user_state_distribution(merged_df, merchent_id)
     print("User State Distribution:")
     print(user_distribution)
 
@@ -41,5 +48,5 @@ def run_pipeline():
     save_images_to_pdf(IMAGE_PATHS, PDF_PATH)
 
 if __name__ == "__main__":
-    run_pipeline()
+    run_pipeline(merged_df, merchent_id=3)
     print("Pipeline execution completed successfully.")

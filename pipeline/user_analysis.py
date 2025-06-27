@@ -10,7 +10,7 @@ sns.set_style('whitegrid')
 
 # Load the merged DataFrame
 merged_df = pd.read_csv("Data/MOCK_DATA.csv")
-def user_analysis_metrics():
+def user_analysis_metrics(merged_df, merchent_id):
     """
     This function analyzes user metrics in the last month,
     calculates total users, new users, market share, and creates a
@@ -147,5 +147,5 @@ def user_analysis_metrics():
     print("Visualization saved as 'daily_user_metrics.png'")
 
 if __name__ == "__main__":
-    user_analysis_metrics()
+    user_analysis_metrics(merged_df, merchent_id=3)
     print("User analysis completed successfully.")
