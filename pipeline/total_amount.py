@@ -19,6 +19,7 @@ def total_amount_calc(merged_df, merchent_id):
     """
     # Convert payment_date to datetime and filter last month
     merged_df['payment_date'] = pd.to_datetime(merged_df['payment_date'])
+    merged_df = merged_df[merged_df['merchant_id'] == merchent_id]
     last_month_start = datetime.now() - timedelta(days=30)
     last_month = merged_df[merged_df['payment_date'] >= last_month_start]
     

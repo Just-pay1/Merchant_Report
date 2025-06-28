@@ -1,5 +1,5 @@
 from pipeline import run_pipeline
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from fastapi.responses import FileResponse
 import uvicorn
 import os
@@ -11,9 +11,9 @@ def welcome_message():
     return {"Merchant Report Creator": "Welcome to the Merchant Report Creator API"}
 
 @app.get("/report/")
-def get_report():
-    # Run the pipeline (this should generate the PDF)
-    run_pipeline()
+def get_report(merchant_id: int = Query(..., description="The ID of the merchant to generate a report for")):
+    # Run the pipeline with the provided merchant_id (this should generate the PDF)
+    run_pipeline(merchant_id=merchant_id)
     
     # Set the path to the generated PDF
     pdf_path = "artifacts/merchant_report.pdf"
@@ -30,5 +30,3 @@ def get_report():
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=5000)
-
-# curl http://localhost:5000/report/ --output merchant_report.pdf

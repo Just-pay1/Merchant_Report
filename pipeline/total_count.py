@@ -18,6 +18,7 @@ def total_count_calc(merged_df, merchent_id):
     """
     # Convert payment_date to datetime
     merged_df['payment_date'] = pd.to_datetime(merged_df['payment_date'])
+    merged_df = merged_df[merged_df['merchant_id'] == merchent_id]
     # Filter data for the last month
     last_month = merged_df[merged_df['payment_date'] >= (pd.to_datetime('today') - pd.DateOffset(months=1))]
     
