@@ -2,16 +2,16 @@
 FROM python:3.10-slim
 
 # Set current working directory
-WORKDIR /usr/FraudDetection
+WORKDIR /usr/MerchantReport
 
 # Copy only the requirements.txt initially
-COPY requirements.txt /usr/FraudDetection/
+COPY requirements.txt /usr/MerchantReport/
 
 # Install the required libraries 
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the project files
-COPY . /usr/FraudDetection/
+COPY . /usr/MerchantReport/
 
 # Expose the port within Docker
 EXPOSE 5000
