@@ -10,7 +10,7 @@ sns.set_style('whitegrid')
 # Load the merged DataFrame
 merged_df = pd.read_csv("Data/MOCK_DATA.csv")
 
-def total_count_calc(merged_df, merchent_id):
+def total_count_calc(merged_df, merchant_id):
     """
     This function calculates the total transaction count in the last month,
     average daily transaction count, busiest and slowest days, and creates a
@@ -18,7 +18,7 @@ def total_count_calc(merged_df, merchent_id):
     """
     # Convert payment_date to datetime
     merged_df['payment_date'] = pd.to_datetime(merged_df['payment_date'])
-    merged_df = merged_df[merged_df['merchant_id'] == merchent_id]
+    merged_df = merged_df[merged_df['merchant_id'] == merchant_id]
     # Filter data for the last month
     last_month = merged_df[merged_df['payment_date'] >= (pd.to_datetime('today') - pd.DateOffset(months=1))]
     

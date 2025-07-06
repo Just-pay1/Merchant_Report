@@ -9,7 +9,7 @@ sns.set_style('whitegrid')
 
 # Load the merged DataFrame
 merged_df = pd.read_csv("Data/MOCK_DATA.csv")
-def transaction_status_analysis(merged_df, merchent_id):
+def transaction_status_analysis(merged_df, merchant_id):
     """
     This function analyzes transaction statuses in the last month,
     calculates financial metrics, and creates a visualization of status distribution
@@ -17,7 +17,7 @@ def transaction_status_analysis(merged_df, merchent_id):
     """
     # Convert payment_date to datetime
     merged_df['payment_date'] = pd.to_datetime(merged_df['payment_date'])
-    merged_df = merged_df[merged_df['merchant_id'] == merchent_id]
+    merged_df = merged_df[merged_df['merchant_id'] == merchant_id]
     # Filter for the last month
     last_month_date = datetime.now() - timedelta(days=30)
     filtered_df = merged_df[merged_df['payment_date'] >= last_month_date].copy()

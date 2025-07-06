@@ -10,7 +10,7 @@ sns.set_style('whitegrid')
 
 # Load the merged DataFrame
 merged_df = pd.read_csv("Data/MOCK_DATA.csv")
-def user_analysis_metrics(df, merged_df, merchent_id):
+def user_analysis_metrics(df, merged_df, merchant_id):
     """
     This function analyzes user metrics in the last month,
     calculates total users, new users, market share, and creates a
@@ -18,7 +18,7 @@ def user_analysis_metrics(df, merged_df, merchent_id):
     """
     # Convert payment_date to datetime
     merged_df['payment_date'] = pd.to_datetime(merged_df['payment_date'])
-    merged_df = merged_df[merged_df['merchant_id'] == merchent_id]
+    merged_df = merged_df[merged_df['merchant_id'] == merchant_id]
     
     # Prepare data
     last_month_start = datetime.now() - timedelta(days=30)

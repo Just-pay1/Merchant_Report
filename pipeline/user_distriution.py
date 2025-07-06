@@ -8,14 +8,14 @@ sns.set_style('whitegrid')
 
 # Load the merged DataFrame
 merged_df = pd.read_csv("Data/MOCK_DATA.csv")
-def user_state_distribution(merged_df, merchent_id):
+def user_state_distribution(merged_df, merchant_id):
     """
     This function analyzes user distribution by state,
     calculates the top states by user count, and creates a pie chart visualization.
     """
     # Convert payment_date to datetime
     merged_df['payment_date'] = pd.to_datetime(merged_df['payment_date'])
-    merged_df = merged_df[merged_df['merchant_id'] == merchent_id]
+    merged_df = merged_df[merged_df['merchant_id'] == merchant_id]
     
     # Calculate top states
     user_state_dist = merged_df.groupby('user_id')['state'].first().value_counts()

@@ -11,7 +11,7 @@ sns.set_style('whitegrid')
 # Load the merged DataFrame
 merged_df = pd.read_csv("Data/MOCK_DATA.csv")
 
-def total_amount_calc(merged_df, merchent_id):
+def total_amount_calc(merged_df, merchant_id):
     """
     This function calculates the total amount paid in the last month,
     average daily paid amount, highest day with its amount, and creates a
@@ -19,7 +19,7 @@ def total_amount_calc(merged_df, merchent_id):
     """
     # Convert payment_date to datetime and filter last month
     merged_df['payment_date'] = pd.to_datetime(merged_df['payment_date'])
-    merged_df = merged_df[merged_df['merchant_id'] == merchent_id]
+    merged_df = merged_df[merged_df['merchant_id'] == merchant_id]
     last_month_start = datetime.now() - timedelta(days=30)
     last_month = merged_df[merged_df['payment_date'] >= last_month_start]
     
