@@ -16,32 +16,32 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 
-def run_pipeline(merchent_id):
+def run_pipeline(merchant_id):
     # Connect and query
     engine = create_engine(DB_URL)
     merged_df = pd.read_sql("SELECT * FROM `reporting-db`.v3_full_report", engine)
     df = merged_df.copy()
     
     # Calculate total amount
-    total_amount = total_amount_calc(merged_df, merchent_id)
+    total_amount = total_amount_calc(merged_df, merchant_id)
     print(f"Total Amount: {total_amount}")
 
     # Calculate total count
-    total_count = total_count_calc(merged_df, merchent_id)
+    total_count = total_count_calc(merged_df, merchant_id)
     print(f"Total Count: {total_count}")
 
     # Analyze transaction status
-    status_analysis = transaction_status_analysis(merged_df, merchent_id)
+    status_analysis = transaction_status_analysis(merged_df, merchant_id)
     print("Transaction Status Analysis:")
     print(status_analysis)
 
     # Analyze user metrics
-    user_metrics = user_analysis_metrics(df, merged_df, merchent_id)
+    user_metrics = user_analysis_metrics(df, merged_df, merchant_id)
     print("User Analysis Metrics:")
     print(user_metrics)
 
     # Analyze user state distribution
-    user_distribution = user_state_distribution(merged_df, merchent_id)
+    user_distribution = user_state_distribution(merged_df, merchant_id)
     print("User State Distribution:")
     print(user_distribution)
 
