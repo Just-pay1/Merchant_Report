@@ -1,10 +1,20 @@
 from pipeline import run_pipeline
 from fastapi import FastAPI, Query
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 import uvicorn
 import os
 
 app = FastAPI()
+
+# Add CORS configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # You can specify trusted domains instead of "*"
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def welcome_message():
